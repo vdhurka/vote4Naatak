@@ -29,10 +29,29 @@
 
   <section class="vote-section">
     <button id="vote-btn" class="vote-btn" type="button">
-      <span class="vote-btn-label">VOTE</span>
-      <span class="vote-btn-sub">opens SFGate</span>
+      <span class="vote-btn-label">GO TO SFGATE</span>
+      <span class="vote-btn-sub">to vote for Naatak</span>
     </button>
-    <p class="vote-hint">On SFGate: <strong>Entertainment &amp; Leisure</strong> &rarr; <strong>Live Theater</strong> &rarr; click <strong>Vote</strong> next to <strong>Naatak Theater</strong>.</p>
+  </section>
+
+  <section class="vote-instructions">
+    <p class="instructions-title">Once SFGate opens:</p>
+    <ol>
+      <li>Click <strong>Entertainment &amp; Leisure</strong></li>
+      <li>Click <strong>Live Theater</strong></li>
+      <li>Click the green <strong>Vote</strong> button next to <strong>Naatak Theater</strong></li>
+    </ol>
+  </section>
+
+  <section class="reminder">
+    <h2>Daily reminder until May 5</h2>
+    <p class="reminder-blurb">One email a day. Unsubscribe any time.</p>
+    <form id="reminder-form" class="reminder-form" novalidate>
+      <input type="text" name="firstName" id="firstName" placeholder="First name (optional)" autocomplete="given-name">
+      <input type="email" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
+      <button type="submit" id="subscribe-btn">Remind me daily</button>
+    </form>
+    <p id="reminder-status" class="reminder-status" role="status"></p>
   </section>
 
   <section class="stats">
@@ -46,17 +65,6 @@
       <p class="stat-num" id="community-total">&middot;&middot;&middot;</p>
       <p class="stat-sub">total vote clicks</p>
     </div>
-  </section>
-
-  <section class="reminder">
-    <h2>Daily reminder until May 5</h2>
-    <p class="reminder-blurb">One email a day. Unsubscribe any time.</p>
-    <form id="reminder-form" class="reminder-form" novalidate>
-      <input type="text" name="firstName" id="firstName" placeholder="First name (optional)" autocomplete="given-name">
-      <input type="email" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
-      <button type="submit" id="subscribe-btn">Remind me daily</button>
-    </form>
-    <p id="reminder-status" class="reminder-status" role="status"></p>
   </section>
 
   <footer class="footer">
