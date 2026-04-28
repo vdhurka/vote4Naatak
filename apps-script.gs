@@ -211,9 +211,13 @@ function unsubscribeUrl_(email) {
 
 function sheetByName_(name) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  const sheet = ss.getSheetByName(name);
-  if (!sheet) throw new Error(`Missing sheet tab: "${name}"`);
-  return sheet;
+  const target = String(name).trim().toLowerCase();
+  const sheets = ss.getSheets();
+  for (const sh of sheets) {
+    if (sh.getName().trim().toLowerCase() === target) return sh;
+  }
+  const found = sheets.map(s => `"${s.getName()}"`).join(', ') || '(none)';
+  throw new Error(`Missing sheet tab: "${name}". Found tabs: ${found}`);
 }
 
 function jsonOut(obj) {
