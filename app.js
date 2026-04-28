@@ -103,23 +103,30 @@ document.getElementById('vote-btn').addEventListener('click', () => {
 });
 
 // ---------- Community counter ----------
+const COMMUNITY_CACHE_KEY = 'naatak.lastCommunityCount';
+
 function updateCommunityCount(n) {
   const el = document.getElementById('community-total');
   el.textContent = n.toLocaleString();
+  try { localStorage.setItem(COMMUNITY_CACHE_KEY, String(n)); } catch {}
+}
+
+function showCachedCommunityCount() {
+  const cached = localStorage.getItem(COMMUNITY_CACHE_KEY);
+  const el = document.getElementById('community-total');
+  if (cached !== null) el.textContent = Number(cached).toLocaleString();
+  else el.textContent = '—';
 }
 
 async function loadCommunityCount() {
-  if (!APPS_SCRIPT_URL) {
-    document.getElementById('community-total').textContent = '—';
-    return;
-  }
+  showCachedCommunityCount();
+  if (!APPS_SCRIPT_URL) return;
   try {
-    const url = `${APPS_SCRIPT_URL}?action=count`;
-    const res = await fetch(url, { method: 'GET' });
+    const res = await fetch(`${APPS_SCRIPT_URL}?action=count`, { method: 'GET' });
     const data = await res.json();
     if (typeof data.count === 'number') updateCommunityCount(data.count);
-  } catch {
-    document.getElementById('community-total').textContent = '—';
+  } catch (err) {
+    console.warn('community count fetch failed:', err);
   }
 }
 
