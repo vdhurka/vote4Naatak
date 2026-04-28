@@ -1,7 +1,7 @@
 // === Naatak Vote Rally — front-end ===
 // Paste your Apps Script web-app URL here after deploying. Leave as '' to disable
 // the community counter and email signup (the rest of the page still works).
-const APPS_SCRIPT_URL = '';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyfzsieefFi6LYnsKHR85GSejxCP6sEd0pseC2wIiGqv0eVXFMONBEQ9mHQk3AJFNuN/exec';
 
 const VOTE_URL = 'https://www.sfgate.com/best/vote/#/gallery?group=537783';
 // May 5, 2026 00:00 Pacific = May 5, 2026 07:00 UTC (PDT, UTC-7)
