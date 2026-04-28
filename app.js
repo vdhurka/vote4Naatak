@@ -7,46 +7,6 @@ const VOTE_URL = 'https://www.sfgate.com/best/vote/#/gallery?group=537783';
 // May 5, 2026 00:00 Pacific = May 5, 2026 07:00 UTC (PDT, UTC-7)
 const CONTEST_END = new Date('2026-05-05T07:00:00Z');
 
-const STORAGE_KEY = 'naatak.votes.v1';
-
-// ---------- Personal tracker (localStorage) ----------
-function readState() {
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { total: 0, byDay: {} };
-    const parsed = JSON.parse(raw);
-    return {
-      total: parsed.total || 0,
-      byDay: parsed.byDay || {},
-    };
-  } catch {
-    return { total: 0, byDay: {} };
-  }
-}
-
-function writeState(state) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
-
-function recordPersonalClick() {
-  const state = readState();
-  const today = new Date().toISOString().slice(0, 10);
-  state.total += 1;
-  state.byDay[today] = (state.byDay[today] || 0) + 1;
-  writeState(state);
-  renderPersonalStats();
-}
-
-function renderPersonalStats() {
-  const state = readState();
-  const days = Object.keys(state.byDay).length;
-  document.getElementById('personal-total').textContent = state.total;
-  document.getElementById('personal-detail').textContent =
-    days === 0 ? 'no votes yet' :
-    days === 1 ? 'across 1 day' :
-    `across ${days} days`;
-}
-
 // ---------- Countdown ----------
 function tickCountdown() {
   const now = new Date();
@@ -88,9 +48,6 @@ document.getElementById('vote-btn').addEventListener('click', () => {
 
   // Open SFGate first (must happen synchronously inside click for popup blockers)
   window.open(VOTE_URL, '_blank', 'noopener');
-
-  // Record locally
-  recordPersonalClick();
 
   // Record to community counter (best-effort, fire-and-forget)
   postToScript({ action: 'click' })
@@ -190,7 +147,6 @@ async function postToScript(payload) {
 }
 
 // ---------- Boot ----------
-renderPersonalStats();
 const live = tickCountdown();
 if (live) setInterval(tickCountdown, 1000);
 loadCommunityCount();
