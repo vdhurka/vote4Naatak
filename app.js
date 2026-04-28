@@ -95,9 +95,11 @@ document.getElementById('vote-btn').addEventListener('click', () => {
   // Record to community counter (best-effort, fire-and-forget)
   postToScript({ action: 'click' })
     .then(data => {
+      console.log('click response:', data);
       if (data && typeof data.count === 'number') updateCommunityCount(data.count);
+      else console.warn('click: unexpected response shape', data);
     })
-    .catch(() => { /* silent; counter just won't update right now */ });
+    .catch(err => console.error('click counter failed:', err));
 });
 
 // ---------- Community counter ----------
@@ -159,8 +161,9 @@ document.getElementById('reminder-form').addEventListener('submit', async (e) =>
       throw new Error((data && data.error) || 'Unknown error');
     }
   } catch (err) {
+    console.error('subscribe failed:', err);
     status.classList.add('error');
-    status.textContent = 'Could not sign you up. Try again in a moment.';
+    status.textContent = `Sign-up failed: ${err && err.message ? err.message : err}`;
   } finally {
     btn.disabled = false;
     btn.textContent = 'Remind me daily';
