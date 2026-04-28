@@ -17,7 +17,7 @@
  *  7. (Optional) Run `sendDailyReminders` manually once to test the email path.
  */
 
-const VOTE_URL = 'https://www.sfgate.com/best/vote/#/gallery?group=537783';
+const VOTE_URL = 'https://www.sfgate.com/best/vote/#/gallery/527870149';
 const FROM_NAME = 'Naatak Theater';
 // Match the front-end: May 5, 2026 00:00 Pacific
 const CONTEST_END = new Date('2026-05-05T07:00:00Z');
