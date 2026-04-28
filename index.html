@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vote Naatak Theater — Best of the Bay 2026</title>
+<meta name="description" content="Vote for Naatak Theater in SFGate's Best of the Bay. Voting closes May 5, 2026.">
+<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://script.google.com">
+</head>
+<body>
+<main>
+  <header class="hero">
+    <img class="logo" src="https://www.naatak.org/wp-content/uploads/2024/06/Naatak-Logo-New-78x34.jpg" alt="Naatak">
+    <h1>Vote <span class="accent">Naatak Theater</span></h1>
+    <p class="tagline">SFGate's Best of the Bay 2026 &middot; Live Theater</p>
+  </header>
+
+  <section class="countdown" aria-live="polite">
+    <p class="countdown-label">Voting closes in</p>
+    <div class="countdown-grid" id="countdown">
+      <div><span class="num" data-unit="days">--</span><span class="unit">days</span></div>
+      <div><span class="num" data-unit="hours">--</span><span class="unit">hrs</span></div>
+      <div><span class="num" data-unit="minutes">--</span><span class="unit">min</span></div>
+      <div><span class="num" data-unit="seconds">--</span><span class="unit">sec</span></div>
+    </div>
+    <p class="closes-at">Closes May 5, 2026 &middot; 12:00 AM Pacific</p>
+  </section>
+
+  <section class="vote-section">
+    <button id="vote-btn" class="vote-btn" type="button">
+      <span class="vote-btn-label">VOTE</span>
+      <span class="vote-btn-sub">opens SFGate</span>
+    </button>
+    <p class="vote-hint">On SFGate: <strong>Entertainment &amp; Leisure</strong> &rarr; <strong>Live Theater</strong> &rarr; click <strong>Vote</strong> next to <strong>Naatak Theater</strong>.</p>
+  </section>
+
+  <section class="stats">
+    <div class="stat-card personal">
+      <p class="stat-label">Your votes</p>
+      <p class="stat-num" id="personal-total">0</p>
+      <p class="stat-sub" id="personal-detail">across 0 days</p>
+    </div>
+    <div class="stat-card community">
+      <p class="stat-label">Naatak fans</p>
+      <p class="stat-num" id="community-total">&middot;&middot;&middot;</p>
+      <p class="stat-sub">total vote clicks</p>
+    </div>
+  </section>
+
+  <section class="reminder">
+    <h2>Daily reminder until May 5</h2>
+    <p class="reminder-blurb">One email a day. Unsubscribe any time.</p>
+    <form id="reminder-form" class="reminder-form" novalidate>
+      <input type="text" name="firstName" id="firstName" placeholder="First name (optional)" autocomplete="given-name">
+      <input type="email" name="email" id="email" placeholder="you@example.com" required autocomplete="email">
+      <button type="submit" id="subscribe-btn">Remind me daily</button>
+    </form>
+    <p id="reminder-status" class="reminder-status" role="status"></p>
+  </section>
+
+  <footer class="footer">
+    <p>Naatak Theater &middot; Indian Theatre in the Bay Area &middot; <a href="https://naatak.org" rel="noopener">naatak.org</a></p>
+    <p class="disclaimer">Community counter tracks clicks on this page, not verified SFGate votes. Vote with your real email on SFGate.</p>
+  </footer>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
